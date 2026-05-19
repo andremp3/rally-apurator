@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RallyApurator", "RallyApurator.csproj", "{A1C0C5BE-6A67-459E-9334-FCB1489A634B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1C0C5BE-6A67-459E-9334-FCB1489A634B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1C0C5BE-6A67-459E-9334-FCB1489A634B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1C0C5BE-6A67-459E-9334-FCB1489A634B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1C0C5BE-6A67-459E-9334-FCB1489A634B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6480AA82-E102-4ED6-AB67-731A7CB358C6}
+	EndGlobalSection
+EndGlobal
