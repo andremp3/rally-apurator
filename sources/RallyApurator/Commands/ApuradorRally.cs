@@ -18,85 +18,132 @@ namespace RallyApurator.Commands
             OpenFileDialog openFileDialog = new OpenFileDialog { Filter = "Arquivos CSV (*.csv)|*.csv" };
             if (openFileDialog.ShowDialog() != DialogResult.OK) return null;
 
-            string[] linhas = File.ReadAllLines(openFileDialog.FileName, System.Text.Encoding.Default);
-
-            for (int i = 0; i < linhas.Length; i++)
+            try
             {
-                string textolinhAtual = linhas[i].Trim();
-                if (string.IsNullOrWhiteSpace(textolinhAtual)) continue;
-
-                if (textolinhAtual.Contains("Pos. "))
+                // 1. VALIDAÇÃO: O arquivo existe e tem conteúdo?
+                FileInfo fileInfo = new FileInfo(openFileDialog.FileName);
+                if (fileInfo.Length == 0)
                 {
-                    pilotosDoBlocoAtual.Clear();
-                    string[] colunasCarrosBrutas = textolinhAtual.Split(';');
-
-                    if (i + 1 >= linhas.Length) break;
-                    string[] colunasNomesBrutas = linhas[i + 1].Split(';');
-
-                    for (int col = 1; col < colunasNomesBrutas.Length; col++)
-                    {
-                        if (string.IsNullOrWhiteSpace(colunasNomesBrutas[col])) continue;
-
-                        string nomePiloto = colunasNomesBrutas[col].Trim();
-                        if (nomePiloto.Equals("Lap", StringComparison.OrdinalIgnoreCase)) continue;
-
-                        string numCarro = "S/N";
-                        if (col < colunasCarrosBrutas.Length && colunasCarrosBrutas[col].Contains("#"))
-                        {
-                            var partes = colunasCarrosBrutas[col].Split('#');
-                            if (partes.Length > 1 && !string.IsNullOrWhiteSpace(partes[1]))
-                            {
-                                numCarro = partes[1].Trim();
-                            }
-                        }
-
-                        PilotoDados pilotoExistente = todosOsPilotos.FirstOrDefault(p => p.Nome.Equals(nomePiloto, StringComparison.OrdinalIgnoreCase));
-
-                        if (pilotoExistente != null)
-                        {
-                            if (numCarro != "S/N") pilotoExistente.Carro = numCarro;
-                            pilotoExistente.ColunaIndex = col;
-                            pilotosDoBlocoAtual.Add(pilotoExistente);
-                        }
-                        else
-                        {
-                            var novoPiloto = new PilotoDados
-                            {
-                                Nome = nomePiloto,
-                                Carro = numCarro,
-                                ColunaIndex = col,
-                                Voltas = new List<TimeSpan>()
-                            };
-                            todosOsPilotos.Add(novoPiloto);
-                            pilotosDoBlocoAtual.Add(novoPiloto);
-                        }
-                    }
-                    i++;
-                    continue;
+                    MessageBox.Show("O arquivo selecionado está totalmente vazio (0 bytes).", "CSV Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
                 }
 
-                string[] colunasVolta = textolinhAtual.Split(';');
-                if (colunasVolta.Length > 0 && int.TryParse(colunasVolta[0], out int numeroVolta))
+                string[] linhas = File.ReadAllLines(openFileDialog.FileName, System.Text.Encoding.Default);
+
+                // 2. VALIDAÇÃO: Tem linhas de dados suficientes para processar?
+                if (linhas == null || linhas.Length < 2)
                 {
-                    foreach (var piloto in pilotosDoBlocoAtual)
+                    MessageBox.Show("O arquivo CSV não possui linhas suficientes para conter dados de pilotos e tempos.", "CSV Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+
+                // Variável de controle para sabermos se encontramos a estrutura padrão da cronometragem
+                bool encontrouEstruturaValida = false;
+
+                for (int i = 0; i < linhas.Length; i++)
+                {
+                    string textolinhAtual = linhas[i].Trim();
+                    if (string.IsNullOrWhiteSpace(textolinhAtual)) continue;
+
+                    if (textolinhAtual.Contains("Pos. "))
                     {
-                        if (piloto.ColunaIndex < colunasVolta.Length)
+                        encontrouEstruturaValida = true; // Achou pelo menos um cabeçalho padrão
+                        pilotosDoBlocoAtual.Clear();
+                        string[] colunasCarrosBrutas = textolinhAtual.Split(';');
+
+                        if (i + 1 >= linhas.Length) break;
+                        string[] colunasNomesBrutas = linhas[i + 1].Split(';');
+
+                        for (int col = 1; col < colunasNomesBrutas.Length; col++)
                         {
-                            string tempoTexto = colunasVolta[piloto.ColunaIndex];
-                            if (!string.IsNullOrWhiteSpace(tempoTexto) && tempoTexto.Trim() != "-")
+                            if (string.IsNullOrWhiteSpace(colunasNomesBrutas[col])) continue;
+
+                            string nomePiloto = colunasNomesBrutas[col].Trim();
+                            if (nomePiloto.Equals("Lap", StringComparison.OrdinalIgnoreCase)) continue;
+
+                            string numCarro = "S/N";
+                            if (col < colunasCarrosBrutas.Length && colunasCarrosBrutas[col].Contains("#"))
                             {
-                                // Aqui assume que o ParserCommands está acessível ou no mesmo namespace
-                                if (ParserCommands.TentarParsearTempo(tempoTexto, out TimeSpan tempoVolta))
+                                var partes = colunasCarrosBrutas[col].Split('#');
+                                if (partes.Length > 1 && !string.IsNullOrWhiteSpace(partes[1]))
                                 {
-                                    piloto.Voltas.Add(tempoVolta);
+                                    numCarro = partes[1].Trim();
+                                }
+                            }
+
+                            PilotoDados pilotoExistente = todosOsPilotos.FirstOrDefault(p => p.Nome.Equals(nomePiloto, StringComparison.OrdinalIgnoreCase));
+
+                            if (pilotoExistente != null)
+                            {
+                                if (numCarro != "S/N") pilotoExistente.Carro = numCarro;
+                                pilotoExistente.ColunaIndex = col;
+                                pilotosDoBlocoAtual.Add(pilotoExistente);
+                            }
+                            else
+                            {
+                                var novoPiloto = new PilotoDados
+                                {
+                                    Nome = nomePiloto,
+                                    Carro = numCarro,
+                                    ColunaIndex = col,
+                                    Voltas = new List<TimeSpan>()
+                                };
+                                todosOsPilotos.Add(novoPiloto);
+                                pilotosDoBlocoAtual.Add(novoPiloto);
+                            }
+                        }
+                        i++;
+                        continue;
+                    }
+
+                    string[] colunasVolta = textolinhAtual.Split(';');
+                    if (colunasVolta.Length > 0 && int.TryParse(colunasVolta[0], out int numeroVolta))
+                    {
+                        foreach (var piloto in pilotosDoBlocoAtual)
+                        {
+                            if (piloto.ColunaIndex < colunasVolta.Length)
+                            {
+                                string tempoTexto = colunasVolta[piloto.ColunaIndex];
+                                if (!string.IsNullOrWhiteSpace(tempoTexto) && tempoTexto.Trim() != "-")
+                                {
+                                    if (ParserCommands.TentarParsearTempo(tempoTexto, out TimeSpan tempoVolta))
+                                    {
+                                        piloto.Voltas.Add(tempoVolta);
+                                    }
                                 }
                             }
                         }
                     }
                 }
-            }
 
-            return todosOsPilotos;
+                // 3. VALIDAÇÃO: O arquivo tinha texto, mas não era o CSV da cronometragem (não tinha os blocos "Pos. ")
+                if (!encontrouEstruturaValida)
+                {
+                    MessageBox.Show("O arquivo não parece ser um relatório de tempos válido. A marcação de posições ('Pos. ') não foi encontrada.", "Formato Incorreto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+
+                // 4. VALIDAÇÃO: Encontrou os blocos, mas nenhum piloto válido foi extraído
+                if (todosOsPilotos.Count == 0)
+                {
+                    MessageBox.Show("Nenhum piloto ou tempo de volta válido pôde ser extraído deste arquivo.", "Dados Ausentes", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return null;
+                }
+
+                return todosOsPilotos;
+            }
+            catch (IOException ioEx)
+            {
+                // Trata o caso clássico de tentar abrir um CSV que já está aberto no Excel
+                MessageBox.Show($"O arquivo está sendo usado por outro programa (provavelmente o Excel).\n\nFeche o arquivo e tente novamente.\nDetalhes: {ioEx.Message}", "Arquivo Bloqueado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                // Captura qualquer outro erro inesperado (falta de memória, caracteres corrompidos, etc)
+                MessageBox.Show($"Falha crítica ao ler o arquivo CSV:\n{ex.Message}", "Erro Inesperado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
 
         // Método para Aplicar as Regras do Regulamento
