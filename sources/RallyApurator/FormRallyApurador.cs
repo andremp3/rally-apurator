@@ -3,9 +3,9 @@ using RallyApurator.Models;
 
 namespace RallyApurator
 {
-    public partial class Form1 : Form
+    public partial class FormRallyApurador : Form
     {
-        public Form1()
+        public FormRallyApurador()
         {
             InitializeComponent();
         }

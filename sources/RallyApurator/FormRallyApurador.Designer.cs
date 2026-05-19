@@ -1,6 +1,6 @@
 ﻿namespace RallyApurator
 {
-    partial class Form1
+    partial class FormRallyApurador
     {
         /// <summary>
         ///  Required designer variable.
