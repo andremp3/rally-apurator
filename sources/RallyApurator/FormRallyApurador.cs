@@ -138,6 +138,21 @@ namespace RallyApurator
             // Exibe na tela de forma organizada
             MessageBox.Show(resumoCuriosidades, "Estatísticas & Curiosidades da Etapa", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void dgvResultados_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Verifica se estamos na coluna de Status
+            if (dgvResultados.Columns[e.ColumnIndex].Name == "Status" && e.Value != null)
+            {
+                string status = e.Value.ToString();
+                if (status.StartsWith("DQL"))
+                {
+                    // Pinta a linha atual de vermelho claro para dar destaque de desclassificação
+                    dgvResultados.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.MistyRose;
+                    dgvResultados.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.DarkRed;
+                }
+            }
+        }
     }
 
 
