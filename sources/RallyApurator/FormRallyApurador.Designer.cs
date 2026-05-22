@@ -41,7 +41,6 @@
             txtTempoDesclassificacao = new TextBox();
             btnExportar = new Button();
             pictureBox1 = new PictureBox();
-            panelCabecalho = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgvResultados).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -161,20 +160,11 @@
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
             // 
-            // panelCabecalho
-            // 
-            panelCabecalho.Location = new Point(403, 12);
-            panelCabecalho.Name = "panelCabecalho";
-            panelCabecalho.Size = new Size(910, 232);
-            panelCabecalho.TabIndex = 12;
-            panelCabecalho.Paint += panelCabecalho_Paint;
-            // 
-            // Form1
+            // FormRallyApurador
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1330, 671);
-            Controls.Add(panelCabecalho);
             Controls.Add(pictureBox1);
             Controls.Add(btnExportar);
             Controls.Add(txtVoltasDesclassificacao);
@@ -189,7 +179,7 @@
             Controls.Add(txtTempoAlvo);
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "Form1";
+            Name = "FormRallyApurador";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Trex Rally - Apurador";
             Load += Form1_Load;
