@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             txtTempoAlvo = new TextBox();
             lblTempoAlvo = new Label();
             btnCarregar = new Button();
@@ -41,6 +41,7 @@
             txtTempoDesclassificacao = new TextBox();
             btnExportar = new Button();
             pictureBox1 = new PictureBox();
+            btnCuriosidades = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvResultados).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -66,7 +67,7 @@
             // 
             btnCarregar.Location = new Point(12, 210);
             btnCarregar.Name = "btnCarregar";
-            btnCarregar.Size = new Size(192, 34);
+            btnCarregar.Size = new Size(111, 34);
             btnCarregar.TabIndex = 2;
             btnCarregar.Text = "Carregar";
             btnCarregar.UseVisualStyleBackColor = true;
@@ -75,14 +76,14 @@
             // dgvResultados
             // 
             dgvResultados.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvResultados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvResultados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvResultados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvResultados.Location = new Point(12, 261);
             dgvResultados.Name = "dgvResultados";
@@ -144,9 +145,9 @@
             // 
             // btnExportar
             // 
-            btnExportar.Location = new Point(217, 210);
+            btnExportar.Location = new Point(129, 210);
             btnExportar.Name = "btnExportar";
-            btnExportar.Size = new Size(150, 34);
+            btnExportar.Size = new Size(107, 34);
             btnExportar.TabIndex = 10;
             btnExportar.Text = "Exportar";
             btnExportar.UseVisualStyleBackColor = true;
@@ -162,11 +163,22 @@
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
             // 
+            // btnCuriosidades
+            // 
+            btnCuriosidades.Location = new Point(242, 210);
+            btnCuriosidades.Name = "btnCuriosidades";
+            btnCuriosidades.Size = new Size(125, 34);
+            btnCuriosidades.TabIndex = 12;
+            btnCuriosidades.Text = "Curiosidades";
+            btnCuriosidades.UseVisualStyleBackColor = true;
+            btnCuriosidades.Click += btnCuriosidades_Click;
+            // 
             // FormRallyApurador
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1330, 671);
+            Controls.Add(btnCuriosidades);
             Controls.Add(pictureBox1);
             Controls.Add(btnExportar);
             Controls.Add(txtVoltasDesclassificacao);
@@ -205,6 +217,6 @@
         private TextBox txtTempoDesclassificacao;
         private Button btnExportar;
         private PictureBox pictureBox1;
-        private Panel panelCabecalho;
+        private Button btnCuriosidades;
     }
 }
