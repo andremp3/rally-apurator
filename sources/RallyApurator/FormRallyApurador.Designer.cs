@@ -146,6 +146,7 @@
             // 
             // btnExportar
             // 
+            btnExportar.Enabled = false;
             btnExportar.Location = new Point(129, 210);
             btnExportar.Name = "btnExportar";
             btnExportar.Size = new Size(107, 34);
@@ -166,6 +167,7 @@
             // 
             // btnCuriosidades
             // 
+            btnCuriosidades.Enabled = false;
             btnCuriosidades.Location = new Point(242, 210);
             btnCuriosidades.Name = "btnCuriosidades";
             btnCuriosidades.Size = new Size(125, 34);

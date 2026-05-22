@@ -58,6 +58,9 @@ namespace RallyApurator
             // 4. ORDENAR E EXIBIR NO GRID
             var rankingOrdenado = ApuradorRally.OrdenarRanking(rankingFinal);
             dgvResultados.DataSource = rankingOrdenado;
+
+            btnExportar.Enabled = true;
+            btnCuriosidades.Enabled = true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
