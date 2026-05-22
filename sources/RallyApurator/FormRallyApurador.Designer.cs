@@ -154,9 +154,11 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Image = Properties.Resources.rallyApuratorBanner;
             pictureBox1.Location = new Point(403, 22);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(910, 222);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
             // 
