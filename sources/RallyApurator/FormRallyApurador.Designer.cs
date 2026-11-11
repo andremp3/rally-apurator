@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRallyApurador));
             txtTempoAlvo = new TextBox();
             lblTempoAlvo = new Label();
             btnCarregar = new Button();
@@ -168,7 +169,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.rallyApuratorBanner;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(322, 18);
             pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
