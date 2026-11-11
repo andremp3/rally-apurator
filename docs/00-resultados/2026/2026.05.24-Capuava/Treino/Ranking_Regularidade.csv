@@ -1,0 +1,12 @@
+﻿Posição;Carro;Piloto;Total Voltas;Voltas Válidas;Média de Tempo;Média de Erro;Status
+1°;S/N;Marcos Rainier Corrêa de Sá;13;11;02:20.230;0,230;OK
+2°;S/N;André Pestana;13;11;02:20.626;0,626;OK
+3°;S/N;Waine Arice;13;10;02:20.800;0,800;OK
+4°;52;Rodrigo Bejar Assis;13;11;02:20.805;0,805;OK
+5°;58;Rogério Moreno Onofrio;13;8;02:21.312;1,312;OK
+6°;60;Sidney Gonzalez;12;9;02:22.077;2,078;OK
+7°;S/N;Lucas Campos da Costa Manso;9;9;02:22.175;2,175;OK
+8°;S/N;Fernando Leibel;11;10;02:22.451;2,451;OK
+9°;50;Alexandre Carvalho;12;9;02:22.717;2,717;OK
+10°;43;Felipe Fontes Aliotte;12;12;02:24.094;4,094;OK
+DQL;53;Sin Young Kang;13;4;-;-;DQL (Menos de 6 voltas válidas)
