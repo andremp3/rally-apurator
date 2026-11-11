@@ -89,7 +89,7 @@
             dgvResultados.Name = "dgvResultados";
             dgvResultados.RowHeadersWidth = 62;
             dgvResultados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvResultados.Size = new Size(1301, 400);
+            dgvResultados.Size = new Size(1301, 530);
             dgvResultados.TabIndex = 3;
             dgvResultados.CellFormatting += dgvResultados_CellFormatting;
             // 
@@ -180,7 +180,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1330, 671);
+            ClientSize = new Size(1330, 803);
             Controls.Add(btnCuriosidades);
             Controls.Add(pictureBox1);
             Controls.Add(btnExportar);
