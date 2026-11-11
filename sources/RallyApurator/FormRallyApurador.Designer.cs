@@ -49,7 +49,7 @@
             // txtTempoAlvo
             // 
             txtTempoAlvo.Location = new Point(174, 23);
-            txtTempoAlvo.Margin = new Padding(2, 2, 2, 2);
+            txtTempoAlvo.Margin = new Padding(2);
             txtTempoAlvo.Name = "txtTempoAlvo";
             txtTempoAlvo.Size = new Size(121, 27);
             txtTempoAlvo.TabIndex = 0;
@@ -68,7 +68,7 @@
             // btnCarregar
             // 
             btnCarregar.Location = new Point(10, 168);
-            btnCarregar.Margin = new Padding(2, 2, 2, 2);
+            btnCarregar.Margin = new Padding(2);
             btnCarregar.Name = "btnCarregar";
             btnCarregar.Size = new Size(89, 27);
             btnCarregar.TabIndex = 2;
@@ -89,7 +89,7 @@
             dgvResultados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvResultados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvResultados.Location = new Point(10, 209);
-            dgvResultados.Margin = new Padding(2, 2, 2, 2);
+            dgvResultados.Margin = new Padding(2);
             dgvResultados.Name = "dgvResultados";
             dgvResultados.RowHeadersWidth = 62;
             dgvResultados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -110,7 +110,7 @@
             // txtVoltasValidas
             // 
             txtVoltasValidas.Location = new Point(174, 60);
-            txtVoltasValidas.Margin = new Padding(2, 2, 2, 2);
+            txtVoltasValidas.Margin = new Padding(2);
             txtVoltasValidas.Name = "txtVoltasValidas";
             txtVoltasValidas.Size = new Size(121, 27);
             txtVoltasValidas.TabIndex = 5;
@@ -119,7 +119,7 @@
             // txtVoltasDesclassificacao
             // 
             txtVoltasDesclassificacao.Location = new Point(174, 126);
-            txtVoltasDesclassificacao.Margin = new Padding(2, 2, 2, 2);
+            txtVoltasDesclassificacao.Margin = new Padding(2);
             txtVoltasDesclassificacao.Name = "txtVoltasDesclassificacao";
             txtVoltasDesclassificacao.Size = new Size(121, 27);
             txtVoltasDesclassificacao.TabIndex = 9;
@@ -148,7 +148,7 @@
             // txtTempoDesclassificacao
             // 
             txtTempoDesclassificacao.Location = new Point(174, 90);
-            txtTempoDesclassificacao.Margin = new Padding(2, 2, 2, 2);
+            txtTempoDesclassificacao.Margin = new Padding(2);
             txtTempoDesclassificacao.Name = "txtTempoDesclassificacao";
             txtTempoDesclassificacao.Size = new Size(121, 27);
             txtTempoDesclassificacao.TabIndex = 6;
@@ -158,7 +158,7 @@
             // 
             btnExportar.Enabled = false;
             btnExportar.Location = new Point(103, 168);
-            btnExportar.Margin = new Padding(2, 2, 2, 2);
+            btnExportar.Margin = new Padding(2);
             btnExportar.Name = "btnExportar";
             btnExportar.Size = new Size(86, 27);
             btnExportar.TabIndex = 10;
@@ -170,7 +170,7 @@
             // 
             pictureBox1.Image = Properties.Resources.rallyApuratorBanner;
             pictureBox1.Location = new Point(322, 18);
-            pictureBox1.Margin = new Padding(2, 2, 2, 2);
+            pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(728, 178);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -181,7 +181,7 @@
             // 
             btnCuriosidades.Enabled = false;
             btnCuriosidades.Location = new Point(194, 168);
-            btnCuriosidades.Margin = new Padding(2, 2, 2, 2);
+            btnCuriosidades.Margin = new Padding(2);
             btnCuriosidades.Name = "btnCuriosidades";
             btnCuriosidades.Size = new Size(100, 27);
             btnCuriosidades.TabIndex = 12;
@@ -207,7 +207,7 @@
             Controls.Add(btnCarregar);
             Controls.Add(lblTempoAlvo);
             Controls.Add(txtTempoAlvo);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormRallyApurador";
