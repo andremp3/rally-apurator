@@ -48,8 +48,8 @@ namespace RallyApurator.Commands
                     string numCarro = partes[0].Trim();
                     string nomePiloto = partes[1].Trim();
 
-                    // Identifica pelo nº do carro: o mesmo piloto pode correr com carros diferentes
-                    pilotoAtual = todosOsPilotos.FirstOrDefault(p => p.Carro == numCarro);
+                    // Identifica por carro + nome (pilotos sem número ficam como "S/N" e não podem ser fundidos)
+                    pilotoAtual = todosOsPilotos.FirstOrDefault(p => p.Carro == numCarro && p.Nome.Equals(nomePiloto, StringComparison.OrdinalIgnoreCase));
                     if (pilotoAtual == null)
                     {
                         pilotoAtual = new PilotoDados
