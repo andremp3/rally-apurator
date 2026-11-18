@@ -24,8 +24,20 @@ namespace RallyApurator.Commands
                 if (textolinhAtual.Contains("Pos. "))
                 {
                     encontrouEstruturaValida = true;
+                    string[] colunasLinha = textolinhAtual.Split(';');
+                    int idxPos = Array.FindIndex(colunasLinha, c => c.Contains("Pos. "));
+
+                    // Em alguns arquivos o cabeçalho "Pos. ..." vem colado no fim da última volta do bloco anterior
+                    // (ex.: "12;-;;-;;;Pos. 6, # 56;..."). Essa parte inicial é uma volta normal do bloco anterior.
+                    if (idxPos > 0)
+                    {
+                        RegistrarVoltas(colunasLinha.Take(idxPos).ToArray(), pilotosDoBlocoAtual);
+                    }
+
                     pilotosDoBlocoAtual.Clear();
-                    string[] colunasCarrosBrutas = textolinhAtual.Split(';');
+
+                    // Realinha os carros para que a coluna N dos carros corresponda à coluna N dos nomes
+                    string[] colunasCarrosBrutas = new[] { "" }.Concat(colunasLinha.Skip(idxPos)).ToArray();
 
                     if (i + 1 >= linhas.Length) break;
                     string[] colunasNomesBrutas = linhas[i + 1].Split(';');
@@ -72,24 +84,7 @@ namespace RallyApurator.Commands
                     continue;
                 }
 
-                string[] colunasVolta = textolinhAtual.Split(';');
-                if (colunasVolta.Length > 0 && int.TryParse(colunasVolta[0], out int numeroVolta))
-                {
-                    foreach (var piloto in pilotosDoBlocoAtual)
-                    {
-                        if (piloto.ColunaIndex < colunasVolta.Length)
-                        {
-                            string tempoTexto = colunasVolta[piloto.ColunaIndex];
-                            if (!string.IsNullOrWhiteSpace(tempoTexto) && tempoTexto.Trim() != "-")
-                            {
-                                if (ParserCommands.TentarParsearTempo(tempoTexto, out TimeSpan tempoVolta))
-                                {
-                                    piloto.Voltas.Add(tempoVolta);
-                                }
-                            }
-                        }
-                    }
-                }
+                RegistrarVoltas(textolinhAtual.Split(';'), pilotosDoBlocoAtual);
             }
 
             if (!encontrouEstruturaValida)
@@ -98,6 +93,25 @@ namespace RallyApurator.Commands
             }
 
             return todosOsPilotos;
+        }
+
+        // Lê uma linha de volta (volta;tempo piloto1;tempo piloto2;...) e adiciona aos pilotos do bloco
+        private static void RegistrarVoltas(string[] colunasVolta, List<PilotoDados> pilotosDoBloco)
+        {
+            if (colunasVolta.Length == 0 || !int.TryParse(colunasVolta[0], out _)) return;
+
+            foreach (var piloto in pilotosDoBloco)
+            {
+                if (piloto.ColunaIndex >= colunasVolta.Length) continue;
+
+                string tempoTexto = colunasVolta[piloto.ColunaIndex];
+                if (string.IsNullOrWhiteSpace(tempoTexto) || tempoTexto.Trim() == "-") continue;
+
+                if (ParserCommands.TentarParsearTempo(tempoTexto, out TimeSpan tempoVolta))
+                {
+                    piloto.Voltas.Add(tempoVolta);
+                }
+            }
         }
     }
 }
