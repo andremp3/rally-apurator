@@ -8,6 +8,10 @@ namespace RallyApurator
 
         private List<PilotoDados> listaPilotosBrutos;
 
+        // Troque aqui: new LeitorVerdeRosso()  ou  new LeitorMyLaps()
+        private readonly ILeitorCronometragem leitor = new LeitorMyLaps();
+        //private readonly ILeitorCronometragem leitor = new LeitorVerdeRosso();
+
         public FormRallyApurador()
         {
             InitializeComponent();
@@ -42,7 +46,7 @@ namespace RallyApurator
             }
 
             // 2. PROCESSAR ARQUIVO (Chama a classe do outro Namespace)
-            this.listaPilotosBrutos = ApuradorRally.ProcessarArquivoCSV();
+            this.listaPilotosBrutos = ApuradorRally.ProcessarArquivoCSV(leitor);
             if (listaPilotosBrutos == null || listaPilotosBrutos.Count == 0) return;
 
             // 3. PROCESSAR AS REGRAS DO RALLY (Chama a classe do outro Namespace)
