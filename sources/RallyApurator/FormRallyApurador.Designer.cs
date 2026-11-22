@@ -54,7 +54,7 @@
             txtTempoAlvo.Name = "txtTempoAlvo";
             txtTempoAlvo.Size = new Size(121, 27);
             txtTempoAlvo.TabIndex = 0;
-            txtTempoAlvo.Text = "2:40.000";
+            txtTempoAlvo.Text = "2:50.000";
             // 
             // lblTempoAlvo
             // 
@@ -153,7 +153,7 @@
             txtTempoDesclassificacao.Name = "txtTempoDesclassificacao";
             txtTempoDesclassificacao.Size = new Size(121, 27);
             txtTempoDesclassificacao.TabIndex = 6;
-            txtTempoDesclassificacao.Text = "2:25.000";
+            txtTempoDesclassificacao.Text = "2:40.000";
             // 
             // btnExportar
             // 
