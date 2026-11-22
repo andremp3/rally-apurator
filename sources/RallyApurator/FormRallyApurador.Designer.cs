@@ -94,7 +94,7 @@
             dgvResultados.Name = "dgvResultados";
             dgvResultados.RowHeadersWidth = 62;
             dgvResultados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvResultados.Size = new Size(1041, 424);
+            dgvResultados.Size = new Size(1307, 763);
             dgvResultados.TabIndex = 3;
             dgvResultados.CellFormatting += dgvResultados_CellFormatting;
             // 
@@ -115,7 +115,7 @@
             txtVoltasValidas.Name = "txtVoltasValidas";
             txtVoltasValidas.Size = new Size(121, 27);
             txtVoltasValidas.TabIndex = 5;
-            txtVoltasValidas.Text = "6";
+            txtVoltasValidas.Text = "4";
             // 
             // txtVoltasDesclassificacao
             // 
@@ -170,10 +170,10 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(322, 18);
+            pictureBox1.Location = new Point(450, 17);
             pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(728, 178);
+            pictureBox1.Size = new Size(867, 178);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
@@ -194,7 +194,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1064, 642);
+            ClientSize = new Size(1328, 983);
             Controls.Add(btnCuriosidades);
             Controls.Add(pictureBox1);
             Controls.Add(btnExportar);
@@ -209,7 +209,6 @@
             Controls.Add(lblTempoAlvo);
             Controls.Add(txtTempoAlvo);
             Margin = new Padding(2);
-            MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormRallyApurador";
             StartPosition = FormStartPosition.CenterScreen;
