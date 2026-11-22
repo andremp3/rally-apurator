@@ -1,0 +1,26 @@
+﻿Posição;Carro;Piloto;Total Voltas;Voltas Válidas;Média de Tempo;Média de Erro;Status
+1°;075;Andre Pestana;8;6;02:50.139;0,140;OK
+2°;085;Jose Augusto Pereira Leite;8;6;02:50.361;0,361;OK
+3°;071;Eduardo Pereira da Silva;6;5;02:51.551;1,551;OK
+4°;072;Raphael Silva;8;5;02:52.532;2,533;OK
+5°;070;Miguel Manfredi;8;6;02:53.080;3,080;OK
+6°;082;Rodrigo Bejar Assis;8;5;02:54.566;4,567;OK
+7°;088;Alberto Tomasi;7;7;02:56.726;6,726;OK
+8°;079;Lucas Adaniya;7;5;02:57.958;7,958;OK
+9°;078;Cecilia Maria De Crescenzo;7;7;02:58.236;8,236;OK
+10°;091;Sidney Goncalez;7;7;02:58.278;8,278;OK
+11°;074;Claudio Julior Lutz Pinheiro;7;5;02:59.088;9,088;OK
+12°;084;Antonio Hamilton de C. A. Neto;7;7;02:59.976;9,976;OK
+13°;093;Eduardo Neves;5;5;03:00.082;10,082;OK
+14°;077;Luciano Palma;7;6;03:00.994;10,995;OK
+15°;080;Waine Arice Filho;7;4;03:03.665;13,665;OK
+16°;083;Andre Martinati;7;4;03:11.122;21,122;OK
+17°;076;Ricardo Rampazo;7;7;03:14.944;24,944;OK
+18°;035;Rogerio Moreno Onofrio;5;5;03:15.908;25,908;OK
+19°;086;Alexandre Carvalho;6;4;03:58.131;68,131;OK
+20°;094;Gustavo Staut;5;4;04:29.658;99,659;OK
+DQL;095;Tiago Vilaca;6;0;-;-;DQL (6 voltas abaixo de 2:40.000)
+DQL;090;Willian Nascimento de Amorim;8;0;-;-;DQL (2 voltas abaixo de 2:40.000)
+DQL;087;Sin Young Kang;8;3;-;-;DQL (Menos de 4 voltas válidas)
+DQL;089;Alexandre Loures Penna;3;3;-;-;DQL (Menos de 4 voltas válidas)
+DQL;073;Felipe Fontes Aliotte;2;2;-;-;DQL (Menos de 4 voltas válidas)
